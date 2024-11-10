@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +9,28 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSpaStaticFiles(configuration =>
+{
+    configuration.RootPath = "clientapp/build";
+});
+
+
 var app = builder.Build();
+
+// Inside `Configure`:
+app.UseSpaStaticFiles();
+
+app.UseSpa(spa =>
+{
+    spa.Options.SourcePath = "clientapp";
+
+    if (app.Environment.IsDevelopment())
+    {
+        spa.UseReactDevelopmentServer(npmScript: "start");
+    }
+});
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -17,7 +40,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+//app.UseStaticFiles();
 app.UseAuthorization();
 
 app.MapControllers();
