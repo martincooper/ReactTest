@@ -1,4 +1,3 @@
-// companyComponent.tsx
 import React, { useEffect, useState } from 'react';
 import { fetchCompanies } from '../services/companyService';
 import { Company } from '../types';
@@ -32,13 +31,13 @@ const CompanyComponent: React.FC = () => {
   return (
     <div className="company-container">
       <h1>Companies</h1>
-      <ul className="company-list">
+      <select className="company-dropdown">
         {companies.map((company) => (
-          <li key={company.id} className="company-item">
+          <option key={company.id} value={company.id}>
             {company.name}
-          </li>
+          </option>
         ))}
-      </ul>
+      </select>
     </div>
   );
 };
