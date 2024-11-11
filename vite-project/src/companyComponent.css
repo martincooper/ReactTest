@@ -1,0 +1,27 @@
+.company-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .company-container h1 {
+    color: #333;
+  }
+  
+  .company-container .company-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .company-container .company-item {
+    background-color: #f9f9f9;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: red; /* Set the foreground text color to red */
+  }
+  
+  .company-container .error {
+    color: red;
+    font-weight: bold;
+  }
